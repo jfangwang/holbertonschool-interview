@@ -1,5 +1,10 @@
 #!/usr/bin/python3
-"""Lockboxes"""
+"""
+Lockboxes
+    Duration of Attempt:
+    #1: 52 mins
+        Notes: Didn't really know how to structure the recursion exactly
+"""
 
 def canUnlockAll(boxes):
     num_boxes = len(boxes)
