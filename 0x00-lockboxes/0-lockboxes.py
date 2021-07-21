@@ -11,6 +11,8 @@ def canUnlockAll(boxes):
     num_boxes = len(boxes)
     checked_boxes = ['False'] * num_boxes
     checked_boxes[0] = 'True'
+    if boxes is None or len(boxes) == 0:
+        return False
     results = check_box(boxes[0], checked_boxes, boxes)
     # print(results)
     for a in results:
