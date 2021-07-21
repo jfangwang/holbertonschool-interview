@@ -15,9 +15,8 @@ def canUnlockAll(boxes):
         return False
     results = check_box(boxes[0], checked_boxes, boxes)
     # print(results)
-    for a in results:
-        if a is "False":
-            return False
+    if "False" in results:
+        return False
     return True
 
 """
