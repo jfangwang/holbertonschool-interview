@@ -28,9 +28,9 @@ Recursion
 
 
 def check_box(box, checked_boxes, boxes):
-    for key in box:
-        if key < len(boxes):
-            if checked_boxes[key] is "False":
-                checked_boxes[key] = "True"
+    if checked_boxes[key] is "False":
+        checked_boxes[key] = "True"
+        for key in box:
+            if key < len(boxes):
                 check_box(boxes[key], checked_boxes, boxes)
     return checked_boxes
