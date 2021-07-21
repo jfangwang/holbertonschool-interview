@@ -12,7 +12,7 @@ def canUnlockAll(boxes):
     checked_boxes = ['False'] * num_boxes
     checked_boxes[0] = 'True'
     results = check_box(boxes[0], checked_boxes, boxes)
-    print(results)
+    # print(results)
     for a in results:
         if a is "False":
             return False
