@@ -12,6 +12,7 @@ def canUnlockAll(boxes):
     checked_boxes = ['False'] * num_boxes
     checked_boxes[0] = 'True'
     results = check_box(boxes[0], checked_boxes, boxes)
+    print(results)
     for a in results:
         if a is "False":
             return False
@@ -26,7 +27,8 @@ Recursion
 
 def check_box(box, checked_boxes, boxes):
     for key in box:
-        if checked_boxes[key] is "False":
-            checked_boxes[key] = "True"
-            check_box(boxes[key], checked_boxes, boxes)
+        if key < len(boxes):
+            if checked_boxes[key] is "False":
+                checked_boxes[key] = "True"
+                check_box(boxes[key], checked_boxes, boxes)
     return checked_boxes
