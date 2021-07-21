@@ -6,6 +6,7 @@ Lockboxes
         Notes: Didn't really know how to structure the recursion exactly
 """
 
+
 def canUnlockAll(boxes):
     num_boxes = len(boxes)
     checked_boxes = ['False'] * num_boxes
@@ -21,6 +22,8 @@ Recursion
     Input: List of keys in a box
     Output: None, updates checked_boxes list
 """
+
+
 def check_box(box, checked_boxes, boxes):
     for key in box:
         if checked_boxes[key] is "False":
