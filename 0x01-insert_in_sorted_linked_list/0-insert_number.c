@@ -26,7 +26,9 @@ listint_t *insert_node(listint_t **head, int number)
 	/* Stops at the node that needs to be inserted at*/
 	while (curr != NULL && curr->n < number)
 	{
-		if (count > 0)
+		if (count == 0)
+			prev = *head;
+		else
 			prev = prev->next;
 		curr = curr->next;
 		count = count + 1;
