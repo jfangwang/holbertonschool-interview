@@ -16,6 +16,7 @@ listint_t *insert_node(listint_t **head, int number)
 	listint_t *curr = *head;
 	listint_t *prev = NULL;
 	listint_t *new = NULL;
+	(void)number;
 	int count = 0;
 
 	if (*head == NULL)
