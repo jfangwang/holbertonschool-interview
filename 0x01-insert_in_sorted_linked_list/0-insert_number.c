@@ -43,11 +43,3 @@ listint_t *insert_node(listint_t **head, int number)
 	}
 	return (new);
 }
-
-/*
-curr = 30
-prev = NULL
-new = 27
-30
-
-*/
