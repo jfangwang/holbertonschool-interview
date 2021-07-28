@@ -30,7 +30,6 @@ listint_t *insert_node(listint_t **head, int number)
 		if (count > 0)
 			prev = prev->next;
 		count = count + 1;
-		printf("Count %i", count);
 	}
 	if (curr->next == NULL)
 	{
