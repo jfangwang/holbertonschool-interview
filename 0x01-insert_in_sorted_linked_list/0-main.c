@@ -14,7 +14,6 @@ int main(void)
 
 	head = NULL;
 
-	add_nodeint_end(&head, 1);
 	print_listint(head);
 
 	printf("-----------------\n");
