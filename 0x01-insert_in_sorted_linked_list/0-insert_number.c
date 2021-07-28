@@ -33,15 +33,18 @@ listint_t *insert_node(listint_t **head, int number)
 	}
 	if (curr->next == NULL)
 	{
-		if (prev == curr)
+		if (count == 0)
 		{
-			*head = new;
-			new->next = curr;
+			if (number < curr->n)
+			{
+				*head = new;
+				new->next = curr;
+			}
+			else
+				curr->next = new;
 		}
 		else
-		{
 			curr->next = new;
-		}
 	}
 	else
 	{
