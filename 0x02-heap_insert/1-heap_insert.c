@@ -68,7 +68,7 @@ heap_t *insert_node(heap_t *curr, heap_t *new_node)
 		curr->right = new_node;
 		return (new_node);
 	}
-	else if (curr->left->right == NULL || curr->left->right && curr->right->right)
+	else if (curr->left->right == NULL || (curr->left->right && curr->right->right))
 	{
 		return (insert_node(curr->left, new_node));
 	}
