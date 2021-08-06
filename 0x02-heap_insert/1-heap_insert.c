@@ -63,11 +63,11 @@ heap_t *insert_node(heap_t *curr, heap_t *new_node)
 		curr->left = new_node;
 	else if (curr->left && curr->right == NULL)
 		curr->right = new_node;
-	else if (binary_tree_balance(curr->left) != 0 ||
-			 binary_tree_balance(curr) < 0)
+	else if (binary_tree_balance(curr) < 0 ||
+			 binary_tree_is_perfect(curr->left) == 0)
 		return (insert_node(curr->left, new_node));
-	else if (binary_tree_balance(curr->right) != 0 ||
-			 binary_tree_balance(curr) > 0)
+	else if (binary_tree_balance(curr) > 0 ||
+			 binary_tree_is_perfect(curr->right) == 0)
 		return (insert_node(curr->right, new_node));
 	else
 		return (insert_node(curr->left, new_node));
@@ -109,3 +109,21 @@ int binary_tree_balance(const binary_tree_t *tree)
 
 }
 
+/**
+ * binary_tree_is_perfect - goes through tree
+ * @tree: a tree node
+ * Return: 1 if a node is a leaf, 0 if not
+ */
+
+int binary_tree_is_perfect(const binary_tree_t *tree)
+{
+	if (tree == NULL)
+		return (0);
+	if (!(tree->left) && !(tree->right))
+		return (1);
+	if (binary_tree_height(tree->left) != binary_tree_height(tree->right))
+		return (0);
+
+	return (binary_tree_is_perfect(tree->left) &&
+		binary_tree_is_perfect(tree->right));
+}
