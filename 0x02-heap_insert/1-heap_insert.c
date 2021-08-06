@@ -14,13 +14,13 @@ heap_t *heap_insert(heap_t **root, int value)
 
 	if ((*root) == NULL)
 	{
-		*root = new_node(NULL, value);
+		*root = binary_tree_node(NULL, value);
 		if (*root == NULL)
 			return (NULL);
 		return (*root);
 	}
 
-	new = new_node(*root, value);
+	new = binary_tree_node(*root, value);
 	if (new == NULL)
 		return (NULL);
 	node = find_root(*root);
@@ -59,15 +59,14 @@ heap_t *swap(heap_t *new_node)
 
 heap_t *insert_node(heap_t *curr, heap_t *new_node)
 {
+	new_node->parent = curr;
 	if (curr->left == NULL && curr->right == NULL)
 	{
-		new_node->parent = curr;
 		curr->left = new_node;
 		return (new_node);
 	}
 	else if (curr->left && curr->right == NULL)
 	{
-		new_node->parent = curr;
 		curr->right = new_node;
 		return (new_node);
 	}
@@ -93,25 +92,4 @@ heap_t *find_root(heap_t *curr)
 	if (curr->parent == NULL)
 		return (curr);
 	return (find_root(curr->parent));
-}
-
-/**
- * new_node - a
- * @parent: parent
- * @value: Value
- * Return: A pointer to the new node or NULL
- */
-
-heap_t *new_node(heap_t *parent, int value)
-{
-	heap_t *new_node;
-
-	new_node = malloc(sizeof(heap_t));
-	if (new_node == NULL)
-		return (NULL);
-	new_node->n = value;
-	new_node->parent = parent;
-	new_node->left = NULL;
-	new_node->right = NULL;
-	return (new_node);
 }

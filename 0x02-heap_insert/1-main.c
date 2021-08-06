@@ -28,6 +28,19 @@ int main(void)
 	heap_t *node;
 
 	root = NULL;
+
+	int i = 0;
+	int arr [6] = { 1, 2, 3, 4, 5, 6 };
+	int len = sizeof(arr) / sizeof(arr[0]);
+
+	for (i=0; i<len; i++)
+	{
+		node = heap_insert(&root, arr[i]);
+		printf("Inserted: %d\n", node->n);
+		binary_tree_print(root);
+	}
+	
+
     node = heap_insert(&root, 50);
     printf("Inserted: %d\n", node->n);
     binary_tree_print(root);
@@ -51,6 +64,4 @@ int main(void)
     binary_tree_print(root);
     _binary_tree_delete(root);
     return (0);
-te(root);
-	return (0);
 }
