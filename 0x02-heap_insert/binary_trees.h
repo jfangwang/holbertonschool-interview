@@ -27,4 +27,5 @@ heap_t *heap_insert(heap_t **root, int value);
 heap_t *insert_node(heap_t *curr, heap_t *new_node);
 heap_t *find_root(heap_t *curr);
 heap_t *swap(heap_t *new_node);
+heap_t *new_node(heap_t *parent, int value);
 #endif
