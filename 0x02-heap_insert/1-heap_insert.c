@@ -63,9 +63,11 @@ heap_t *insert_node(heap_t *curr, heap_t *new_node)
 		curr->left = new_node;
 	else if (curr->left && curr->right == NULL)
 		curr->right = new_node;
-	else if (binary_tree_balance(curr->left) != 0 || binary_tree_balance(curr) < 0)
+	else if (binary_tree_balance(curr->left) != 0 ||
+			 binary_tree_balance(curr) < 0)
 		return (insert_node(curr->left, new_node));
-	else if (binary_tree_balance(curr->right) != 0 || binary_tree_balance(curr) > 0)
+	else if (binary_tree_balance(curr->right) != 0 ||
+			 binary_tree_balance(curr) > 0)
 		return (insert_node(curr->right, new_node));
 	else
 		return (insert_node(curr->left, new_node));
