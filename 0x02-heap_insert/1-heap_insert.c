@@ -77,7 +77,6 @@ heap_t *insert_node(heap_t *curr, heap_t *new_node)
 	{
 		return (insert_node(curr->right, new_node));
 	}
-	return (NULL);
 }
 
 /**
