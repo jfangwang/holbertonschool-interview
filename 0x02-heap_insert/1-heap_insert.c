@@ -14,11 +14,11 @@ heap_t *heap_insert(heap_t **root, int value)
 
 	if ((*root) == NULL)
 	{
-		*root = binary_tree_node(NULL, value);
+		*root = new_node(NULL, value);
 		return (*root);
 	}
 
-	new = binary_tree_node(*root, value);
+	new = new_node(*root, value);
 	if (new == NULL)
 		return (NULL);
 	node = find_root(*root);
