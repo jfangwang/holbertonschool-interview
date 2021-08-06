@@ -19,6 +19,8 @@ heap_t *heap_insert(heap_t **root, int value)
 	}
 
 	new = binary_tree_node(*root, value);
+	if (new == NULL)
+		return (NULL);
 	node = find_root(*root);
 	new = insert_node(node, new);
 	return (swap(new));
