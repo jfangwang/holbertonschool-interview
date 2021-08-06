@@ -15,6 +15,8 @@ heap_t *heap_insert(heap_t **root, int value)
 	if ((*root) == NULL)
 	{
 		*root = new_node(NULL, value);
+		if (*root == NULL)
+			return (NULL);
 		return (*root);
 	}
 
