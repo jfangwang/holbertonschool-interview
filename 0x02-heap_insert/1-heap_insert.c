@@ -23,8 +23,7 @@ heap_t *heap_insert(heap_t **root, int value)
 	new = binary_tree_node(*root, value);
 	if (new == NULL)
 		return (NULL);
-	node = find_root(*root);
-	new = insert_node(node, new);
+	new = insert_node(*root, new);
 	return (swap(new));
 }
 
@@ -61,35 +60,50 @@ heap_t *insert_node(heap_t *curr, heap_t *new_node)
 {
 	new_node->parent = curr;
 	if (curr->left == NULL && curr->right == NULL)
-	{
 		curr->left = new_node;
-		return (new_node);
-	}
 	else if (curr->left && curr->right == NULL)
-	{
 		curr->right = new_node;
-		return (new_node);
-	}
-	else if (curr->left->right == NULL || curr->right->right)
-	{
+	else if (binary_tree_balance(curr->left) != 0 || binary_tree_balance(curr) < 0)
 		return (insert_node(curr->left, new_node));
-	}
-	else
-	{
+	else if (binary_tree_balance(curr->right) != 0 || binary_tree_balance(curr) > 0)
 		return (insert_node(curr->right, new_node));
-	}
-	return (NULL);
+	else
+		return (insert_node(curr->left, new_node));
+	return (new_node);
 }
 
 /**
- * find_root - Finds the root of the tree
- * @curr: A double pointer to the root node of the Heap
- * Return: A pointer to the inserted node, or NULL on failure
+ * binary_tree_height - function
+ * @tree: parent
+ * Return: A pointer to the new node or NULL
  */
-
-heap_t *find_root(heap_t *curr)
+size_t binary_tree_height(const binary_tree_t *tree)
 {
-	if (curr->parent == NULL)
-		return (curr);
-	return (find_root(curr->parent));
+	int right_sum = 0;
+	int left_sum = 0;
+
+	if (tree == NULL)
+		return (0);
+	if (!(tree->left) && !(tree->right))
+		return (1);
+	if (tree->right)
+		right_sum = 1 + binary_tree_height(tree->right);
+	if (tree->left)
+		left_sum = 1 + binary_tree_height(tree->left);
+	if (left_sum > right_sum)
+		return (left_sum);
+	return (right_sum);
 }
+/**
+ * binary_tree_balance - a
+ * @tree: parent
+ * Return: A pointer to the new node or NULL
+ */
+int binary_tree_balance(const binary_tree_t *tree)
+{
+	if (tree == NULL)
+		return (0);
+	return (binary_tree_height(tree->left) - binary_tree_height(tree->right));
+
+}
+
