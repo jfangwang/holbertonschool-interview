@@ -5,8 +5,9 @@
 def minOperations(n):
     actions = 0
     i = 2
-    for i in range(2, n+1):
+    while n > 1 and i <= n:
         while (n % i == 0):
             n = n / i
             actions = actions + i
+        i = i + 1
     return actions
