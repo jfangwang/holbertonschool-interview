@@ -6,12 +6,14 @@ def minOperations(n):
     num = 1
     actions = 0
     paste = 0
+    if n < 1:
+        return 0
     return recurse(num, actions, paste, n)
 
 
 def recurse(num, actions, paste, n):
     path1 = None
-    if n < 1 or num > n:
+    if num > n:
         return (num)
     if num == n:
         return (actions)
