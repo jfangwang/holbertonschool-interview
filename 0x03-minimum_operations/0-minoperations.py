@@ -3,4 +3,19 @@
 
 
 def minOperations(n):
-    return 0
+    num = 1
+    actions = 2
+    paste = 1
+    return recurse(num, actions, paste, n)
+
+
+
+
+def recurse(num, actions, paste, n):
+    if n < 1 or num > n:
+        return (actions - 2)
+    path1 = recurse(num + paste, actions + 1, paste, n)
+    path2 = recurse(num * 2, actions + 2, paste, n)
+    if path1 < path2:
+        return path1
+    return path2
