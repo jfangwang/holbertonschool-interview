@@ -72,6 +72,7 @@ int main(void)
 		{3, 3, 3},
 		{1, 3, 1}
 	};
+	
 
 	print_grid_sum(grid1, grid2);
 
