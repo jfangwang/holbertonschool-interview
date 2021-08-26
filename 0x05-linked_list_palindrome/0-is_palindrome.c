@@ -25,7 +25,7 @@ int is_palindrome(listint_t **head)
 		len++;
 	}
 	node = *head;
-	
+
 	arr = malloc(len * 4);
 
 	len--;
