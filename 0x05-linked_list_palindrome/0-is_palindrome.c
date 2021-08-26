@@ -9,9 +9,9 @@
  */
 int is_palindrome(listint_t **head)
 {
-	/* Find length of list */
 	listint_t *node;
 	int len = 1;
+	int *arr;
 
 	if (head == NULL)
 		return (0);
@@ -25,7 +25,8 @@ int is_palindrome(listint_t **head)
 		len++;
 	}
 	node = *head;
-	int arr[len];
+	
+	arr = malloc(len * 4);
 
 	len--;
 	while (len >= 0)
