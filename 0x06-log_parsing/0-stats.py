@@ -23,6 +23,7 @@ try:
             line_count += 1
             if (line_count == 10):
                 line_count = 0
+                status_dict = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
                 print_output(status_dict, file_size)
 except Exception:
     pass
