@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Log Parsing Interview"""
 import sys
 
 
@@ -16,19 +17,20 @@ status_dict = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
 
 try:
     for line in sys.stdin:
+        curr_line = line.split()
         try:
-            curr_line = line.split()
-            if (len(curr_line) == 9 and curr_line[1] == "-" and
-                    curr_line[4] == "\"GET" and curr_line[5] == "/projects/260"
-                    and curr_line[6] == "HTTP/1.1\""):
-                file_size += int(curr_line[-1])
-                status_dict[int(curr_line[-2])] += 1
-                line_count += 1
-                if (line_count == 10):
-                    line_count = 0
-                    print_output(status_dict, file_size)
+            file_size += int(curr_line[-1])
+            status_dict[int(curr_line[-2])] += 1
+            line_count += 1
         except Exception:
             continue
+        if (line_count == 10):
+            line_count = 0
+            print_output(status_dict, file_size)
+            status_dict = {
+                200: 0, 301: 0, 400: 0, 401: 0,
+                403: 0, 404: 0, 405: 0, 500: 0
+            }
 except Exception:
     pass
 finally:
