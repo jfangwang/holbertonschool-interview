@@ -15,6 +15,9 @@ int is_palindrome(unsigned long n)
 	end = 10;
 	beg = 1;
 
+	if (num < 10)
+		return (1);
+
 	while (num > 10)
 	{
 		num = num / 10;
