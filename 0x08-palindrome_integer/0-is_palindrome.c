@@ -9,27 +9,29 @@
 */
 int is_palindrome(unsigned long n)
 {
-	unsigned long int beg, end, num;
+	unsigned long beg, end, num;
 
 	num = n;
 	end = 10;
 	beg = 1;
 
-	if (num < 10)
+	if (n < 10)
 		return (1);
 
 	while (num > 10)
 	{
-		num = num / 10;
-		beg = beg * 10;
+		num /= 10;
+		beg *= 10;
 	}
 
 	while (beg >= end)
 	{
 		if (n / beg % 10 != n % end)
 			return (0);
-		beg = beg / 10;
-		n = n / 10;
+
+		n = n - beg * (n / beg % 10);
+		beg /= 100;
+		n /= 10;
 	}
 	return (1);
 }
