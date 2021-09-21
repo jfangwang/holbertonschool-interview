@@ -26,6 +26,7 @@ int is_palindrome(unsigned long n)
 
 	while (beg >= end)
 	{
+		printf("%lu, %lu, %lu, %lu\n", beg, end, n, (n / beg % 10));
 		if (n / beg % 10 != n % end)
 			return (0);
 
