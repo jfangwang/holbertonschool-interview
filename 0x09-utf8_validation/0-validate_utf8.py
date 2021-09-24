@@ -12,12 +12,11 @@
 
 
 def validUTF8(data):
-
     byte_count = 0
     for num in data:
         """Transform into binary"""
         bin_rep = format(num, '#010b')[-8:]
-    
+
         "Check if num is part of a series of bytes or a new byte"
         if byte_count == 0:
 
@@ -39,4 +38,4 @@ def validUTF8(data):
         byte_count = byte_count - 1
     if (byte_count == 0):
         return True
-    return False 
+    return False
