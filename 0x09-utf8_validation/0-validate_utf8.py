@@ -16,7 +16,6 @@ def validUTF8(data):
     byte_count = 0
     for item in data:
         """Want to check how many bytes there are"""
-        print(item, bin(item)[2:], byte_count)
         item = bin(item)[2:]
         if (byte_count == 0):
             index = 0
