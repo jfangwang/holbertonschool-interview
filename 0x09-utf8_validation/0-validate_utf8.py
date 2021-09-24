@@ -14,20 +14,29 @@
 def validUTF8(data):
 
     byte_count = 0
-    for item in data:
-        """Want to check how many bytes there are"""
-        item = bin(item)[2:]
-        if (byte_count == 0):
-            index = 0
-            while (item[index] == "1"):
-                byte_count = byte_count + 1
-                index = index + 1
-            if (byte_count == 1):
-                byte_count = 0
-            else:
-                byte_count = byte_count - 1
-        else:
-            if (item[byte_count - 1] != "1"):
+    for num in data:
+        """Transform into binary"""
+        bin_rep = format(num, '#010b')[-8:]
+    
+        "Check if num is part of a series of bytes or a new byte"
+        if byte_count == 0:
+
+            """Check how many bytes in num"""
+            for bit in bin_rep:
+                if bit == '0':
+                    break
+                else:
+                    byte_count = byte_count + 1
+            """skip if byte count is 1"""
+            if byte_count == 0:
+                continue
+            if byte_count == 1 or byte_count > 4:
                 return False
-            byte_count = byte_count - 1
-    return True
+        else:
+            """Part of a series of bytes"""
+            if not (bin_rep[0] == '1' and bin_rep[1] == '0'):
+                return False
+        byte_count = byte_count - 1
+    if (byte_count == 0):
+        return True
+    return False 
