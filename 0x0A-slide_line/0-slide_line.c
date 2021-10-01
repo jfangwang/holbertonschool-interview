@@ -32,7 +32,7 @@ int slide_line(int *line, size_t size, int direction)
 		shift_all_right(line, size);
 		for (placement = size; placement > 0; placement--)
 		{
-			if (placement - 2 >= 0 && line[placement - 1] == line[placement - 2])
+			if (line[placement - 1] == line[placement - 2])
 			{
 				line[placement - 2] *= 2;
 				line[placement - 1] = 0;
