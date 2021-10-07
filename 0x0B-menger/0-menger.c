@@ -12,6 +12,7 @@
 void place_block(int col, int row)
 {
 	int empty = 0;
+
 	while (col > 0 && row > 0)
 	{
 		/* The rule */
@@ -22,7 +23,6 @@ void place_block(int col, int row)
 			row = 0;
 			empty = 1;
 		}
-			
 		col = col / 3;
 		row = row / 3;
 	}
