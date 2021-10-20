@@ -25,6 +25,7 @@ def check_argv():
         print("N must be at least 4")
         exit(1)
 
+
 def valid_place(row, col):
     """checks if a queen can be placed without interferance"""
     # check row and col
@@ -33,11 +34,12 @@ def valid_place(row, col):
             return False
     # check diagonals
     for k in range(0, N):
-        for l in range(0, N):
-            if (k + l == col + row) or (k - l == row - col):
-                if board[k][l] == 1:
+        for j in range(0, N):
+            if (k + j == col + row) or (k - j == row - col):
+                if board[k][j] == 1:
                     return False
     return True
+
 
 global tried_spots
 tried_spots = []
@@ -57,7 +59,7 @@ def solve(queens, tried_spots):
             for j in range(i + 1, N):
                 if answer[i] == answer[j]:
                     right = False
-        if right == True:
+        if right:
             print("{}".format(answer))
     for row in range(0, N):
         for col in range(0, N):
@@ -69,6 +71,7 @@ def solve(queens, tried_spots):
                     return True
                 board[row][col] = 0
     return False
+
 
 check_argv()
 board = [[0]*N for a in range(N)]
