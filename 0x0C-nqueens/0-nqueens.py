@@ -41,38 +41,24 @@ def valid_place(row, col):
     return True
 
 
-global tried_spots
-tried_spots = []
-
-
-def solve(queens, tried_spots):
+def solve(queens, tried_spots, answer):
     """Backtrace Method"""
-    if queens == 0:
-        global answer
-        answer = []
-        right = True
-        for a in range(len(tried_spots) - N, len(tried_spots)):
-            answer.append(tried_spots[a])
-        for i in range(N):
-            if (answer[i][0] != i):
-                right = False
-            for j in range(i + 1, N):
-                if answer[i] == answer[j]:
-                    right = False
-        if right:
-            print("{}".format(answer))
+    if (queens == 0):
+        if [] not in tried_spots:
+            print(tried_spots)
     for row in range(0, N):
         for col in range(0, N):
             if valid_place(row, col) is True and board[row][col] != 1:
                 board[row][col] = 1
-                tried_spots.append([row, col])
+                tried_spots[row] = [row, col]
+                for clear in range(row + 1, N):
+                    tried_spots[clear] = []
                 # recursive part
-                if solve(queens - 1, tried_spots) is True:
-                    return True
+                solve(queens - 1, tried_spots, answer)
                 board[row][col] = 0
-    return False
 
 
 check_argv()
 board = [[0]*N for a in range(N)]
-solve(N, tried_spots)
+tried_spots = [[] for a in range(N)]
+solve(N, tried_spots, [])
