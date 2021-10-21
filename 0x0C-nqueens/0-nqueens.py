@@ -43,24 +43,20 @@ def valid_place(solution, row, col):
     return True
 
 
-def solve(N, solution, row, col, queens):
+def solve(N, solution, row, queens):
     """Base Case"""
-    if row == N - 1 and col == N:
-        return False
     if queens == 0:
         print(solution)
         return True
     """Recursion"""
-    if (col < N):
+    for col in range(N):
         if valid_place(solution, row, col):
             solution.append([row, col])
-            solve(N, solution, row, col + 1, queens - 1)
+            solve(N, solution, row + 1, queens - 1)
             solution.remove([row, col])
-    else:
-        solve(N, solution, row + 1, 0, queens)
 
 
 check_argv()
-for a in range(N):
-    solution = []
-    solve(N, solution, 0, a, N)
+solution = []
+solve(N, solution, 0, N)
+    
