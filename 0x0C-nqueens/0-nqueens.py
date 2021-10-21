@@ -37,7 +37,7 @@ def valid_place(solution, row, col):
                 return False
         """Check for diagonals"""
         for pair in solution:
-            for i in range(1, N):
+            for i in range(1, row + 1):
                 if ([row - i, col - i] == pair or [row - i, col + i] == pair):
                     return False
     return True
@@ -62,4 +62,3 @@ def solve(N, solution, row, queens):
 check_argv()
 solution = []
 solve(N, solution, 0, N)
-    
