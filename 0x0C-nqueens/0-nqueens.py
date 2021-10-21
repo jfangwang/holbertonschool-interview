@@ -26,41 +26,41 @@ def check_argv():
         exit(1)
 
 
-def valid_place(tried_spots, row, col):
+def valid_place(solution, row, col):
     """Check if new placement is a valid spot or not"""
-    if len(tried_spots) == 0:
+    if len(solution) == 0:
         return True
     else:
         """Check the horizontal and vertical"""
-        for pair in tried_spots:
+        for pair in solution:
             if pair[0] == row or pair[1] == col:
                 return False
         """Check for diagonals"""
         for i in range(1, row + 1):
-            for pair in tried_spots:
+            for pair in solution:
                 if ([row - 1, col - 1] == pair or [row - 1, col + 1] == pair):
                     return False
     return True
 
 
-def solve(N, tried_spots, row, col, queens):
+def solve(N, solution, row, col, queens):
     """Base Case"""
     if row == N - 1 and col == N:
         return False
     if queens == 0:
-        print(tried_spots)
+        print(solution)
         return True
     """Recursion"""
     if (col < N):
-        if valid_place(tried_spots, row, col):
-            tried_spots.append([row, col])
-            return solve(N, tried_spots, row, col + 1, queens - 1)
-        return solve(N, tried_spots, row, col + 1, queens)
+        if valid_place(solution, row, col):
+            solution.append([row, col])
+            solve(N, solution, row, col + 1, queens - 1)
+            solution.remove([row, col])
     else:
-        return solve(N, tried_spots, row + 1, 0, queens)
+        solve(N, solution, row + 1, 0, queens)
 
 
 check_argv()
 for a in range(N):
-    tried_spots = []
-    solve(N, tried_spots, 0, a, N)
+    solution = []
+    solve(N, solution, 0, a, N)
