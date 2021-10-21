@@ -26,39 +26,41 @@ def check_argv():
         exit(1)
 
 
-def valid_place(row, col):
-    """checks if a queen can be placed without interferance"""
-    # check row and col
-    for a in range(N):
-        if board[row][a] == 1 or board[a][col] == 1:
-            return False
-    # check diagonals
-    for k in range(0, N):
-        for j in range(0, N):
-            if (k + j == col + row) or (k - j == row - col):
-                if board[k][j] == 1:
+def valid_place(tried_spots, row, col):
+    """Check if new placement is a valid spot or not"""
+    if len(tried_spots) == 0:
+        return True
+    else:
+        """Check the horizontal and vertical"""
+        for pair in tried_spots:
+            if pair[0] == row or pair[1] == col:
+                return False
+        """Check for diagonals"""
+        for i in range(1, row + 1):
+            for pair in tried_spots:
+                if ([row - 1, col - 1] == pair or [row - 1, col + 1] == pair):
                     return False
     return True
 
 
-def solve(queens, tried_spots, answer):
-    """Backtrace Method"""
-    if (queens == 0):
-        if [] not in tried_spots:
-            print(tried_spots)
-    for row in range(0, N):
-        for col in range(0, N):
-            if valid_place(row, col) is True and board[row][col] != 1:
-                board[row][col] = 1
-                tried_spots[row] = [row, col]
-                for clear in range(row + 1, N):
-                    tried_spots[clear] = []
-                # recursive part
-                solve(queens - 1, tried_spots, answer)
-                board[row][col] = 0
+def solve(N, tried_spots, row, col, queens):
+    """Base Case"""
+    if row == N - 1 and col == N:
+        return False
+    if queens == 0:
+        print(tried_spots)
+        return True
+    """Recursion"""
+    if (col < N):
+        if valid_place(tried_spots, row, col):
+            tried_spots.append([row, col])
+            return solve(N, tried_spots, row, col + 1, queens - 1)
+        return solve(N, tried_spots, row, col + 1, queens)
+    else:
+        return solve(N, tried_spots, row + 1, 0, queens)
 
 
 check_argv()
-board = [[0]*N for a in range(N)]
-tried_spots = [[] for a in range(N)]
-solve(N, tried_spots, [])
+for a in range(N):
+    tried_spots = []
+    solve(N, tried_spots, 0, a, N)
