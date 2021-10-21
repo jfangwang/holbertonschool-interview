@@ -36,9 +36,9 @@ def valid_place(solution, row, col):
             if pair[0] == row or pair[1] == col:
                 return False
         """Check for diagonals"""
-        for i in range(1, row + 1):
-            for pair in solution:
-                if ([row - 1, col - 1] == pair or [row - 1, col + 1] == pair):
+        for pair in solution:
+            for i in range(1, N):
+                if ([row - i, col - i] == pair or [row - i, col + i] == pair):
                     return False
     return True
 
@@ -53,6 +53,9 @@ def solve(N, solution, row, queens):
         if valid_place(solution, row, col):
             solution.append([row, col])
             solve(N, solution, row + 1, queens - 1)
+            """We remove it to check for the next spot even
+            if the current [row, col] is true. This will check
+            every spot on this row"""
             solution.remove([row, col])
 
 
