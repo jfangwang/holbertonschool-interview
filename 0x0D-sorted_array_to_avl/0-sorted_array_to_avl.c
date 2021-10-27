@@ -4,7 +4,11 @@
 
 
 /**
- * sorted_array_to_avl - Function that builds an AVL tree from an array
+ * sorted_array_to_avl - Function that builds an AVL tree from an array.
+ * The strategey is to take advantage of the sorted array and get the
+ * middle number. Then we make two sub arrays, [0 .. mid - 1] and
+ * [mid + 1 .. size - 1]. The two sub array will be the left and right
+ * children of any given node and let recursion build out the tree.
  * @array: int array
  * @size: size_t size
  * Return: Pointer of new node or NULL on failure
