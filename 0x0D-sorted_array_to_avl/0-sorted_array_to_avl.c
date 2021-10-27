@@ -36,8 +36,10 @@ avl_t *build_avl_tree(int *array, avl_t *root, size_t start, size_t end)
 	/* If Start > End, the current array[index] has no children */
 	if (start > end)
 		return (NULL);
-	/* Middle will be floored and works in our favor for selecting
-	our middle node. */
+	/**
+	 * Middle will be floored and works in our favor for selecting
+	 * our middle node.
+	 */
 	middle = (start + end) / 2;
 	new = add_new_node(array, middle, root);
 	/* Recurse the left and right paths of the current node */
