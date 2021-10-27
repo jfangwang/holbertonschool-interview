@@ -33,9 +33,11 @@ avl_t *build_avl_tree(int *array, avl_t *root, size_t start, size_t end)
 	size_t middle;
 	avl_t *new;
 
-	/* If Start > End, the current index has no children */
+	/* If Start > End, the current array[index] has no children */
 	if (start > end)
 		return (NULL);
+	/* Middle will be floored and works in our favor for selecting
+	our middle node. */
 	middle = (start + end) / 2;
 	new = add_new_node(array, middle, root);
 	/* Recurse the left and right paths of the current node */
@@ -49,11 +51,11 @@ avl_t *build_avl_tree(int *array, avl_t *root, size_t start, size_t end)
 /**
  * add_new_node - Function that builds an AVL tree from an array
  * @array: int array
- * @index: int index in array
+ * @i: int index in array
  * @parent: Parent node of new node
  * Return: returns the newly added node or NULL if node failed to create
  */
-avl_t *add_new_node(int *array, int index, avl_t *parent)
+avl_t *add_new_node(int *array, int i, avl_t *parent)
 {
 	avl_t *new_node;
 
@@ -61,7 +63,7 @@ avl_t *add_new_node(int *array, int index, avl_t *parent)
 	if (!new_node)
 		return (NULL);
 	/* Init node */
-	new_node->n = array[index];
+	new_node->n = array[i];
 	new_node->parent = parent;
 	new_node->left = NULL;
 	new_node->right = NULL;
