@@ -22,14 +22,11 @@ def rain(walls):
 
 def reduce_wall(walls):
     """Remove any zeros that are not between two nums above 0"""
-    index, beg, end = 0, 0, len(walls) - 1
+    beg, end = 0, len(walls) - 1
     if len(set(walls)) < 2:
         return []
-    while index < len(walls) and walls[index] == 0:
-        index += 1
-    beg = index
-    index = len(walls) - 1
-    while index > 0 and walls[index] == 0:
-        index -= 1
-    end = index
+    while beg < len(walls) and walls[beg] == 0:
+        beg += 1
+    while end > 0 and walls[end] == 0:
+        end -= 1
     return walls[beg: end + 1]
