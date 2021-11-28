@@ -35,22 +35,22 @@ void heap_sort(int *array, size_t size)
  */
 void heapify(int *array, int n, size_t size, int i)
 {
-	int largest = i;
+	int biggest = i;
 	int left = 2 * i + 1;
 	int right = 2 * i + 2;
 	int temp;
 
 	/* Find if left or right node is smaller */
-	if (right < n && array[right] > array[largest])
-		largest = right;
-	if (left < n && array[left] > array[largest])
-		largest = left;
-	if (largest != i)
+	if (right < n && array[right] > array[biggest])
+		biggest = right;
+	if (left < n && array[left] > array[biggest])
+		biggest = left;
+	if (biggest != i)
 	{
-		temp = array[largest];
-		array[largest] = array[i];
+		temp = array[biggest];
+		array[biggest] = array[i];
 		array[i] = temp;
 		print_array(array, size);
-		heapify(array, n, size, largest);
+		heapify(array, n, size, biggest);
 	}
 }
