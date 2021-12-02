@@ -20,6 +20,7 @@ int advanced_binary(int *array, size_t size, int value)
 
 	while (left <= right)
 	{
+		printf("Searching in array:");
 		print_list(array, left, right);
 		mid = left + ((right - left) / 2);
 		if (left == right && left == mid)
@@ -48,12 +49,11 @@ int advanced_binary(int *array, size_t size, int value)
  */
 void print_list(int *array, int left, int right)
 {
-	int i = left;
-
-	printf("Searching in array:");
-	for (i = left; i < right; i++)
-		printf(" %d,", array[i]);
-	printf(" %d", array[right]);
-	printf("\n");
-
+	if (left == right)
+	{
+		printf(" %d\n", array[right]);
+		return;
+	}	
+	printf(" %d,", array[left]);
+	print_list(array, left + 1, right);
 }
