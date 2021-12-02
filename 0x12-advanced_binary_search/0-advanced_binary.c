@@ -16,28 +16,33 @@ int advanced_binary(int *array, size_t size, int value)
 
 	int left = 0;
 	int right = size - 1;
-	int mid = 0;
 
-	while (left <= right)
-	{
-		printf("Searching in array:");
-		print_list(array, left, right);
-		mid = left + ((right - left) / 2);
-		if (left == right && left == mid)
-		{
-			if (array[mid] == value)
-				return (mid);
-			return (-1);
-		}
-		if (array[mid] < value)
-			left = mid + 1;
-		else
-			right = mid - 1;
-	}
+	return (recurse(array, left, right, value));
+}
+
+/**
+ * recurse - binary search with recursion
+ * @array: input list
+ * @left: index of left
+ * @right: index of right
+ * Return: Nothing, void function
+ */
+
+int recurse(int *array, int left, int right, int value)
+{
+	int mid = left + ((right - left) / 2);
+
+	if (left > right)
+		return (-1);
+	printf("Searching in array:");
+	print_list(array, left, right);
 	if (array[mid] == value)
 		return (mid);
-	return (-1);
 
+	if (array[mid] < value)
+		return (recurse(array, mid + 1, right, value));
+	else
+		return (recurse(array, left, mid - 1, value));
 }
 
 /**
