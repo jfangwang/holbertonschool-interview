@@ -53,7 +53,7 @@ void print_list(int *array, int left, int right)
 	{
 		printf(" %d\n", array[right]);
 		return;
-	}	
+	}
 	printf(" %d,", array[left]);
 	print_list(array, left + 1, right);
 }
