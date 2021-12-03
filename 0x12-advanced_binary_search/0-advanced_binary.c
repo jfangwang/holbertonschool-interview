@@ -51,8 +51,6 @@ int recurse(int *array, int left, int right, int value)
 		return (-1);
 	printf("Searching in array:");
 	print_list(array, left, right);
-	if (array[mid] == value && left <= right && left == mid)
-		return (mid);
 	if (array[mid] == value && array[mid - 1] != value)
 		return (mid);
 	if (array[mid] >= value)
