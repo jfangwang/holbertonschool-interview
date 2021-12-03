@@ -33,12 +33,10 @@ int advanced_binary(int *array, size_t size, int value)
 		return (-1);
 	if (size == 1)
 	{
+		printf("Searching in array:");
+		print_list(array, 0, 0);
 		if (array[0] == value)
-		{
-			printf("Searching in array:");
-			print_list(array, 0, 0);
 			return (0);
-		}
 		return (-1);
 	}
 
