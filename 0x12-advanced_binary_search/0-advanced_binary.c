@@ -11,13 +11,13 @@
  */
 void print_list(int *array, int left, int right)
 {
-	if (left == right)
+	printf("Searching in array:");
+	while (left < right)
 	{
-		printf(" %d\n", array[right]);
-		return;
+		printf(" %d,", array[left]);
+		left++;
 	}
-	printf(" %d,", array[left]);
-	print_list(array, left + 1, right);
+	printf(" %d\n", array[left]);
 }
 
 /**
@@ -47,9 +47,8 @@ int recurse(int *array, int left, int right, int value)
 {
 	int mid = left + ((right - left) / 2);
 
-	if (left == right)
+	if (left > right)
 		return (-1);
-	printf("Searching in array:");
 	print_list(array, left, right);
 	if (array[mid] == value && array[mid - 1] != value)
 		return (mid);
