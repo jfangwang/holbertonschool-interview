@@ -11,13 +11,13 @@
  */
 void print_list(int *array, int left, int right)
 {
-	printf("Searching in array:");
-	while (left < right)
+	if (left == right)
 	{
-		printf(" %d,", array[left]);
-		left++;
+		printf(" %d\n", array[right]);
+		return;
 	}
-	printf(" %d\n", array[left]);
+	printf(" %d,", array[left]);
+	print_list(array, left + 1, right);
 }
 
 /**
@@ -31,6 +31,12 @@ int advanced_binary(int *array, size_t size, int value)
 {
 	if (array == NULL)
 		return (-1);
+	if (size == 1)
+	{
+		if (array[0] == value)
+			return (0);
+		return (-1);
+	}
 
 	return (recurse(array, 0, size - 1, value));
 }
@@ -49,6 +55,7 @@ int recurse(int *array, int left, int right, int value)
 
 	if (left > right)
 		return (-1);
+	printf("Searching in array:");
 	print_list(array, left, right);
 	if (array[mid] == value && array[mid - 1] != value)
 		return (mid);
