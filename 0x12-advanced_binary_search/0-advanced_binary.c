@@ -55,7 +55,7 @@ int recurse(int *array, int left, int right, int value)
 {
 	int mid = left + ((right - left) / 2);
 
-	if (left <= right)
+	if (left < right)
 	{
 		printf("Searching in array:");
 		print_list(array, left, right);
@@ -64,6 +64,11 @@ int recurse(int *array, int left, int right, int value)
 		if (array[mid] >= value)
 			return (recurse(array, left, mid, value));
 		return (recurse(array, mid + 1, right, value));
+	}
+	if (left == right)
+	{
+		if (array[left] == value)
+			return (left);
 	}
 	return (-1);
 }
