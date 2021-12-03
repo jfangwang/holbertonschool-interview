@@ -58,5 +58,7 @@ int recurse(int *array, int left, int right, int value)
 		if (array[mid] < value)
 			return (recurse(array, mid + 1, right, value));
 	}
+	if (left == right && array[left] == value)
+		return (left);
 	return (-1);
 }
