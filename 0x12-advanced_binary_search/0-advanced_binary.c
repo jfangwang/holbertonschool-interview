@@ -53,9 +53,9 @@ int recurse(int *array, int left, int right, int value)
 	print_list(array, left, right);
 	if (array[mid] == value && left <= right && left == mid)
 		return (mid);
-
-	if (array[mid] < value)
-		return (recurse(array, mid + 1, right, value));
-	else
-		return (recurse(array, left, mid - 1, value));
+	if (array[mid] == value && array[mid - 1] != value)
+		return (mid);
+	if (array[mid] >= value)
+		return (recurse(array, left, mid, value));
+	return (recurse(array, mid + 1, right, value));
 }
