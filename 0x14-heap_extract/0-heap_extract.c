@@ -32,7 +32,7 @@ void heapify(heap_t *node)
 		{
 			swap(node, node->left);
 			heapify(node->left);
-		}	
+		}
 }
 
 /**
