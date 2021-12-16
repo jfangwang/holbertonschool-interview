@@ -102,7 +102,13 @@ int heap_extract(heap_t **root)
 
 	/* Swap */
 	root[0]->n = last_node->n;
-	if (last_node->parent->right)
+	if (!root[0]->left && !root[0]->right)
+	{
+		free(*root);
+		*root = NULL;
+		return (extract);
+	}
+	else if (last_node->parent->right)
 		last_node->parent->right = NULL;
 	else
 		last_node->parent->left = NULL;
