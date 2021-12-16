@@ -28,7 +28,7 @@ void heapify(heap_t *node)
 			swap(node, node->right);
 			heapify(node->right);
 		}
-		else if (node->left && node->right->n > node->n)
+		else if (node->left && node->left->n > node->n)
 		{
 			swap(node, node->left);
 			heapify(node->left);
