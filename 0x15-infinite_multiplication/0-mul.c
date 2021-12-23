@@ -17,9 +17,9 @@ int _len(char *string)
 	return (string - start);
 }
 
- /**
- * _isdigit - check if input is digit or not
- * @num: input number
+/**
+ * _isdigit - check if string is digit or not
+ * @num: input number as string
  * Return: 1 for true, 0 for false
  **/
 int _isdigit(char *num)
