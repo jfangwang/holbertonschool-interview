@@ -4,6 +4,36 @@
 
 
 /**
+ * _len - find the length of a string
+ * @string: Given string
+ * Return: The length of the string
+ **/
+ int _len(char *string)
+ {
+     char *start = string;
+
+     while (*string)
+        string++;
+    return (string - start);
+ }
+
+ /**
+ * _isdigit - check if input is digit or not
+ * @num: input number
+ * Return: 1 for true, 0 for false
+ **/
+int _isdigit(char *num)
+{
+    while (*num)
+    {
+        if (*num < '0' || *num > '9')
+            return (0);
+        num++;
+    }
+    return (1);
+}
+
+/**
  * main - prdouct of 2 numbers
  * @a: argc
  * @b: argv
@@ -11,14 +41,11 @@
  */
 int main(int a, char *b[])
 {
-	if (a == 3)
+	if (a != 3 || _isdigit(b[1]) == 0 || _isdigit(b[2]) == 0)
 	{
-		printf("%d\n", atoi(b[1]) * atoi(b[2]));
-		return (0);
-	}
-	else
-	{
-		printf("Error\n");
+        printf("Error\n");
 		exit(98);
 	}
+    printf("%d\n", atoi(b[1]) * atoi(b[2]));
+    return (0);
 }
