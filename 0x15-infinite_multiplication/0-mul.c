@@ -11,7 +11,7 @@
  */
 int main(int a, char *b[])
 {
-	if (a == 3)
+	if (a == 3 || isdigit(b[1]) || isdigit(b[2]))
 	{
 		printf("%d\n", atoi(b[1]) * atoi(b[2]));
 		return (0);
@@ -19,6 +19,6 @@ int main(int a, char *b[])
 	else
 	{
 		printf("Error\n");
-		exit (98);
+		exit(98);
 	}
 }
