@@ -46,6 +46,6 @@ int main(int a, char *b[])
 		printf("Error\n");
 		exit(98);
 	}
-	printf("%d", atoi(b[1]) * atoi(b[2]));
+	printf("%d\n", atoi(b[1]) * atoi(b[2]));
 	return (0);
 }
