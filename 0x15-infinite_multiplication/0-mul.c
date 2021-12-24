@@ -24,11 +24,19 @@ int _len(char *string)
  **/
 int _isdigit(char *num)
 {
-	while (*num)
+	int index = 0;
+
+	if (num[index] == '-')
 	{
-		if (*num < '0' || *num > '9')
+		index++;
+		if (!num[index])
 			return (0);
-		num++;
+	}
+	while (num[index])
+	{
+		if (num[index] < '0' || num[index] > '9')
+			return (0);
+		index++;
 	}
 	return (1);
 }
