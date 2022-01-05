@@ -15,4 +15,3 @@ def rotate_2d_matrix(matrix):
         matrix[len(matrix) - 1 - i][0] = temp2
         # Left to Top
         matrix[0][i] = temp
-        print(matrix)
