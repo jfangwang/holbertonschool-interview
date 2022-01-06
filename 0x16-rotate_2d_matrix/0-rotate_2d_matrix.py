@@ -3,15 +3,26 @@
 
 
 def rotate_2d_matrix(matrix):
-    for i in range(0, len(matrix) - 1):
-        # Top to Right
-        temp = matrix[i][-1]
-        matrix[i][-1] = matrix[0][i]
-        # Right to Bottom
-        temp2 = matrix[len(matrix) - 1][len(matrix) - i - 1]
-        matrix[len(matrix) - 1][len(matrix) - i - 1] = temp
-        # Bottom to Left
-        temp = matrix[len(matrix) - 1 - i][0]
-        matrix[len(matrix) - 1 - i][0] = temp2
-        # Left to Top
-        matrix[0][i] = temp
+    for i in range(0, len(matrix)):
+        nums = []
+        # Top Row
+        nums.append(matrix[0][i])
+
+        # Right Column
+        nums.append(matrix[i][len(matrix) - 1])
+        matrix[i][len(matrix) - 1] = nums.pop(0)
+
+        # Bottom Row
+        nums.append(matrix[len(matrix) - 1][len(matrix) - 1 - i])
+        matrix[len(matrix) - 1][len(matrix) - 1 - i] = nums.pop(0)
+
+        # Left Column
+        nums.append(matrix[len(matrix) - 1 - i][0])
+        matrix[len(matrix) - 1 - i][0] = nums.pop(0)
+
+        # Replace Top Row
+        matrix[0][i] = nums.pop(0)
+
+# [[1 2 3],
+#  [4 5 6],
+#  [7 8 9]]
