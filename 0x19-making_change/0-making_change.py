@@ -18,6 +18,3 @@ def makeChange(coins, total):
             cur_total += coins[0]
             coin_count += 1
     return (-1)
-
-
-    
