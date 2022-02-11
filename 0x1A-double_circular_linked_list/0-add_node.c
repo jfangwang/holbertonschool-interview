@@ -3,7 +3,7 @@
 
 /**
  * add_node_end - Add a new node to the end of a double circular linked list
- * @list:  the list to modify
+ * @list: The list to modify
  * @str: The string to copy into the new node
  * Return: Address of the new node, or NULL on failure
  */
@@ -20,7 +20,9 @@ List *add_node_end(List **list, char *str)
 		free(new_node);
 		return (NULL);
 	}
+
 	new_node->str = strdup(str);
+
 	if (!new_node->str)
 	{
 		free(new_node);
@@ -46,10 +48,10 @@ List *add_node_end(List **list, char *str)
 
 
 /**
- * add_node_end - Add a new node to the end of a double circular linked list
- * @list:  the list to modify
- * @str: The string to copy into the new node
- * Return: Address of the new node, or NULL on failure
+ * add_node_end - Add a new node to the end of a double circular linked list.
+ * @list: The list to modify.
+ * @str: The string to copy into the new node.
+ * Return: Address of the new node, or NULL on failure.
  */
 List *add_node_begin(List **list, char *str)
 {
@@ -64,7 +66,9 @@ List *add_node_begin(List **list, char *str)
 		free(new_node);
 		return (NULL);
 	}
+
 	new_node->str = strdup(str);
+
 	if (!new_node->str)
 	{
 		free(new_node);
