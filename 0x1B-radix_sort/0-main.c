@@ -11,7 +11,7 @@ int main(void)
 {
     // int array[] = {99, 98, 97, 96, 95, 94, 93, 92, 91, 58, 88, 38, 55, 45, 67, 88, 1, 111, 88, 32, 56, 86, 65, 21, 11, 69, 47, 35};
     
-    int array[] = {19, 48, 99, 71, 13, 52, 96, 73, 86, 7};
+    int array[] = {170};
     size_t n = sizeof(array) / sizeof(array[0]);
 
     print_array(array, n);
