@@ -11,8 +11,8 @@ void radix_sort(int *array, size_t size)
 {
 	int *temp, placement = 1, len = size, i, j, max = INT_MIN, ti;
 
-	temp = malloc(sizeof(int *) * size);
-	if (!temp || size <= 0)
+	temp = malloc(sizeof(int) * size);
+	if (!temp || !array || size <= 0)
 		return;
 
 	for (i = 0; i < len; i++)
