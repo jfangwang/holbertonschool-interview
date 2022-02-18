@@ -42,4 +42,5 @@ void radix_sort(int *array, size_t size)
 		placement *= 10;
 		max /= 10;
 	}
+	free(temp);
 }
