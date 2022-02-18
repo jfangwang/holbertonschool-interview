@@ -9,7 +9,7 @@
  */
 void radix_sort(int *array, size_t size)
 {
-	int i = 0, k = 0, j = 0, max = 0, swap_index = 0, ord = 0, len = size;
+	int i = 0, j = 0, max = 0, swap_index = 0, len = size;
 	int placement = 1;
 
 	if (size == 0)
@@ -23,7 +23,6 @@ void radix_sort(int *array, size_t size)
 	while (max > 0)
 	{
 		swap_index = 0;
-		ord = 0;
 		for (i = 0; i < 10; i++)
 		{
 			for (j = 0; j < len; j++)
@@ -34,24 +33,42 @@ void radix_sort(int *array, size_t size)
 					swap_index = swap_index + 1;
 				}
 			}
-			for (j = 0; j < len; j++)
-			{
-				for (k = ord + 1; k < len; k++)
-				{
-					if ((array[j] % (placement * 10)) / placement == i &&
-						array[j] < array[k])
-					{
-						swap(array, array[j], array[ord], len);
-						ord += 1;
-						break;
-					}
-				}
-			}
 		}
+		_sort(array, len, placement);
 		placement *= 10;
 		print_array(array, len);
 		max /= 10;
 	}
+}
+
+
+/**
+ * Sort the array
+ * @array: The array to modify
+ * @size: size of arr
+ * @placement: digit place
+ * Return: Array
+ */
+int *_sort(int *array, int size, int placement)
+{
+	int min = -1, a,b, digit;
+
+	digit = (array[0] % (placement * 10)) / placement;
+	for (a = 0; a < size; a++)
+	{
+		if (((array[a] % (placement * 10)) / placement) != digit)
+			digit = (array[a] % (placement * 10)) / placement;
+		min = array[a];
+		for (b = a; b < size; b++)
+		{
+			if (min > array[b] && (array[b] % (placement * 10)) / placement == digit)
+			{
+				min = array[b];
+			}
+		}
+		swap(array, array[a], min, size);
+	}
+	return (array);
 }
 
 
@@ -80,5 +97,4 @@ int *swap(int *array, int num1, int num2, int size)
 		i += 1;
 	}
 	return (array);
-
 }
