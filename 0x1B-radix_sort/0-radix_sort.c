@@ -30,13 +30,12 @@ void radix_sort(int *array, size_t size)
         for(i=0; i<10; i++) {
             for(j=0; j<len; j++) {
                 if ((array[j] % (placement * 10)) / placement == i) {
-                    printf("%d\n", (array[j] % (placement * 10)));
                     swap(array, array[j], array[swap_index], len);
                     swap_index = swap_index + 1;
                 }
             }
         }
-        placement += 1;
+        placement *= 10;
         print_array(array, len);
         max = max / 10;
     }
