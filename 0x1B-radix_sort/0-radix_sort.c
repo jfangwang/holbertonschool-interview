@@ -43,7 +43,7 @@ void radix_sort(int *array, size_t size)
 
 
 /**
- * Sort the array
+ * _sort - sort the array
  * @array: The array to modify
  * @size: size of arr
  * @placement: digit place
@@ -51,7 +51,7 @@ void radix_sort(int *array, size_t size)
  */
 int *_sort(int *array, int size, int placement)
 {
-	int min = -1, a,b, digit;
+	int min = -1, a, b, digit;
 
 	digit = (array[0] % (placement * 10)) / placement;
 	for (a = 0; a < size; a++)
