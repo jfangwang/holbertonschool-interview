@@ -9,13 +9,8 @@
  */
 void radix_sort(int *array, size_t size)
 {
-	int i = 0;
-	int j = 0;
-	int max = 0;
-	int swap_index = 0;
-	int len = size;
+	int i = 0, k = 0, j = 0, max = 0, swap_index = 0, ord = 0, len = size;
 	int placement = 1;
-
 
 	if (size == 0)
 		return;
@@ -25,7 +20,6 @@ void radix_sort(int *array, size_t size)
 			max = array[i];
 		i += 1;
 	}
-	swap_index = 0;
 	while (max > 0)
 	{
 		swap_index = 0;
@@ -37,6 +31,19 @@ void radix_sort(int *array, size_t size)
 				{
 					swap(array, array[j], array[swap_index], len);
 					swap_index = swap_index + 1;
+				}
+			}
+			ord = 0;
+			for (j = 0; j < len; j++)
+			{
+				for (k = ord; k < len; k++)
+				{
+					if ((array[j] % (placement * 10)) / placement == i &&
+						array[j] < array[ord])
+					{
+						swap(array, array[j], array[ord], len);
+						ord += 1;
+					}
 				}
 			}
 		}
