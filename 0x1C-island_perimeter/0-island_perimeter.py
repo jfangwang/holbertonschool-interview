@@ -3,6 +3,7 @@
 
 
 def check_perimeter(grid, row, col):
+    """Checks and counts the perimeter of given grid[r][c]"""
     count = 0
     if (row - 1 >= 0 and grid[row - 1][col] == 0):
         count += 1
@@ -16,6 +17,7 @@ def check_perimeter(grid, row, col):
 
 
 def island_perimeter(grid):
+    """Entry function"""
     visited = []
     sum = 0
 
