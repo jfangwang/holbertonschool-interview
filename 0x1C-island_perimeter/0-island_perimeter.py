@@ -6,12 +6,16 @@ def check_perimeter(grid, row, col):
     """Checks and counts the perimeter of given grid[r][c]"""
     count = 0
     if (row - 1 >= 0 and grid[row - 1][col] == 0):
+        grid[row - 1][col] = "x"
         count += 1
     if (row + 1 < len(grid) and grid[row + 1][col] == 0):
+        grid[row + 1][col] = "x"
         count += 1
     if (col - 1 >= 0 and grid[row][col - 1] == 0):
+        grid[row][col - 1] = "x"
         count += 1
     if (col + 1 < len(grid[row]) and grid[row][col + 1] == 0):
+        grid[row][col + 1] = "x"
         count += 1
     return (count)
 
