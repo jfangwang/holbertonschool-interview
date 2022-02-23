@@ -11,7 +11,7 @@ def check_perimeter(grid, row, col):
         count += 1
     if (col - 1 >= 0 and grid[row][col - 1] == 0):
         count += 1
-    if (col + 1 < len(grid) and grid[row][col + 1] == 0):
+    if (col + 1 < len(grid[row]) and grid[row][col + 1] == 0):
         count += 1
     return (count)
 
@@ -22,7 +22,7 @@ def island_perimeter(grid):
     sum = 0
 
     for row in range(0, len(grid)):
-        for col in range(0, len(grid)):
+        for col in range(0, len(grid[row])):
             if (grid[row][col] == 1 and (row, col) not in visited):
                 visited.append((row, col))
                 sum += check_perimeter(grid, row, col)
