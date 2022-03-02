@@ -10,7 +10,7 @@ int binary_tree_is_avl(const binary_tree_t *tree)
 {
 	if (!tree)
 		return (0);
-	if (check_height(tree) >= 2)
+	if (check_height(tree) > 1)
 		return (0);
 	if (check_bst(tree, INT_MIN, INT_MAX) == 1)
 		return (0);
@@ -29,12 +29,12 @@ int check_height(const binary_tree_t *tree)
 	int right = 0;
 
 	if (!tree)
-		return (1);
+		return (0);
 	if (tree->left)
 		left = check_height(tree->left) + 1;
 	if (tree->right)
 		right = check_height(tree->right) + 1;
-	return (abs(left - right));
+	return (left < right ? right : left);
 }
 
 
