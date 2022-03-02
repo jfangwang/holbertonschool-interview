@@ -18,9 +18,7 @@ int binary_tree_is_avl(const binary_tree_t *tree)
 
 	if (abs(left - right) > 1)
 		return (0);
-	if (check_bst(tree, INT_MIN, INT_MAX) == 1)
-		return (0);
-	return (1);
+	return (check_bst(tree, INT_MIN, INT_MAX));
 }
 
 
@@ -47,16 +45,16 @@ int check_height(const binary_tree_t *tree)
  * @tree: root node
  * @min: min value
  * @max: max value
- * Return: 1 = False, 0 = True
+ * Return: 1 = valid avl, 0 = not valid
  */
 int check_bst(const binary_tree_t *tree, int min, int max)
 {
 	if (!tree)
-		return (0);
-	if (tree->n <= min || tree->n >= max)
 		return (1);
-	if (check_bst(tree->left, min, tree->n) == 0 &&
-		check_bst(tree->right, tree->n, max) == 0)
+	if (tree->n <= min || tree->n >= max)
+		return (0);
+	if (!check_bst(tree->left, min, tree->n) ||
+		!check_bst(tree->right, tree->n, max))
 		return (0);
 	return (1);
 }
