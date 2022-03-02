@@ -29,7 +29,7 @@ int check_height(const binary_tree_t *tree)
 	int right = 0;
 
 	if (!tree)
-		return (0);
+		return (1);
 	if (tree->left)
 		left = check_height(tree->left) + 1;
 	if (tree->right)
