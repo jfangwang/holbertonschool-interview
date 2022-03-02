@@ -10,9 +10,9 @@ int binary_tree_is_avl(const binary_tree_t *tree)
 {
 	if (!tree)
 		return (0);
-	if (check_height(tree) > 1)
+	if (check_height(tree) >= 2)
 		return (0);
-	if (check_bst(tree, INT_MIN, INT_MAX) > 0)
+	if (check_bst(tree, INT_MIN, INT_MAX) == 1)
 		return (0);
 	return (1);
 }
