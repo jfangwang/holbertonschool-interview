@@ -29,5 +29,8 @@ int binary_tree_is_avl(const binary_tree_t *tree);
 void binary_tree_print(const binary_tree_t *);
 binary_tree_t *binary_tree_node(binary_tree_t *root, int n);
 
+int check_height(const binary_tree_t *tree);
+int check_bst(const binary_tree_t *tree, int min, int max);
+int isBalanced(const binary_tree_t *tree);
 
 #endif
