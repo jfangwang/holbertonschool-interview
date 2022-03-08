@@ -36,8 +36,6 @@ int wildcmp(char *s1, char *s2)
 	while (*b == '*')
 		b++;
 	if (*b == *a)
-	{
 		return (1);
-	}
 	return (0);
 }
