@@ -12,30 +12,26 @@ int wildcmp(char *s1, char *s2)
 	char *a;
 	char *b;
 
+	a = s1;
 	b = s2;
-	for (a = s1; *a != '\0'; a++)
-	{
-		if (*b == '\0')
-			break;
-		if (*b == '*')
-		{
-			while (*b == '*' && *b != '\0')
-				b++;
-			if (*b == '\0')
-				return (1);
-			while (*a != '\0')
-				a++;
-			a--;
-			while (*b != *a && *a != '\0')
-				a--;
-		}
-		if (*b != *a)
-			return (0);
-		b++;
-	}
-	while (*b == '*')
-		b++;
-	if (*b == *a)
+
+	if (*a == '\0' && *b == '*')
+		return (wildcmp(a, b + 1));
+	if (*a == '\0' && *b == '\0')
 		return (1);
+	if (*a == '\0' || *b == '\0')
+		return (0);
+	if (*a == *b)
+		return (wildcmp(a + 1, b + 1));
+	if (*b == '*')
+	{
+		if (*(b + 1) == '\0')
+			return (1);
+		if (*(a + 1) == *(b + 1))
+			return wildcmp(a + 1, b + 1);
+		if (*a == *(b + 1) || *(b + 1) == '*')
+			return (wildcmp(a, b + 1) || wildcmp(a + 1, b));
+		return (wildcmp(a + 1, b));
+	}
 	return (0);
 }
