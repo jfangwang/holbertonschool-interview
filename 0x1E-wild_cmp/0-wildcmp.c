@@ -28,7 +28,7 @@ int wildcmp(char *s1, char *s2)
 		if (*(b + 1) == '\0')
 			return (1);
 		if (*(a + 1) == *(b + 1))
-			return wildcmp(a + 1, b + 1);
+			return (wildcmp(a + 1, b + 1));
 		if (*a == *(b + 1) || *(b + 1) == '*')
 			return (wildcmp(a, b + 1) || wildcmp(a + 1, b));
 		return (wildcmp(a + 1, b));
