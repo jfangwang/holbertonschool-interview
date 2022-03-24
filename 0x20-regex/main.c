@@ -18,7 +18,7 @@
 int main(void)
 {
 	TEST_MATCH("H", "*H");
-	TEST_MATCH("h", ".*h");
+	TEST_MATCH("ah", "asdf*.h");
 	TEST_MATCH("H", ".");
 
 	return (EXIT_SUCCESS);
