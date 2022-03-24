@@ -6,5 +6,6 @@
 
 
 int regex_match(char *str, char *pattern);
+int wildcmp(char *s1, char *s2);
 
 #endif

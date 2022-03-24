@@ -17,9 +17,25 @@
  */
 int main(void)
 {
-	TEST_MATCH("H", "*H");
-	TEST_MATCH("ah", "asdf*.h");
-	TEST_MATCH("H", ".");
+	TEST_MATCH("H", "H");
+    TEST_MATCH("HH", "H");
+    TEST_MATCH("HH", "H*");
+    TEST_MATCH("HHHHHHHHHHHHHHHHH", "H*");
 
-	return (EXIT_SUCCESS);
+    TEST_MATCH("Holberton", ".*");
+    TEST_MATCH("Alex", ".*");
+    TEST_MATCH("Guillaume", ".*");
+    TEST_MATCH("Julien", ".*");
+
+    TEST_MATCH("Holberton", "Z*H.*");
+    TEST_MATCH("Holberton", "Z*H.*olberton");
+    TEST_MATCH("Holberton", "Z*H.*o.");
+    TEST_MATCH("Holberton", "Z*H.*o");
+
+    TEST_MATCH("Holberton", "holberton");
+    TEST_MATCH("Holberton", ".olberton");
+
+    TEST_MATCH("!H@o#l$b%e^r&t(o)n_", "!.@.#.$.%.^.&.(.)._");
+
+    return (EXIT_SUCCESS);
 }
