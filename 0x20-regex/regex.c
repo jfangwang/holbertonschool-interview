@@ -38,9 +38,9 @@ int wildcmp(char *s1, char *s2)
 
 	if ((*a == '\0' && *b == '\0') || *b == '*')
 		return (1);
-	if (*a == *b || *b == '.')
-		return (wildcmp(a - 1, b - 1));
 	if (*a == '\0' || *b == '\0')
 		return (0);
+	if (*a == *b || *b == '.')
+		return (wildcmp(a - 1, b - 1));
 	return (0);
 }
