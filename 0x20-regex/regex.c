@@ -8,17 +8,23 @@
  */
 int regex_match(char *str, char *pattern)
 {
-	char *a;
-	char *b;
+	int adv = 1;
 
-	a = str;
-	b = pattern;
-
-	while (*(b + 1) != '\0')
-		b++;
-	while (*(a + 1) != '\0')
-		a++;
-	return (wildcmp(a, b));
+	if (*pattern == 0)
+		return (*str == 0);
+	if (*pattern && *(pattern + 1) && *(pattern + 1) == '*')
+	{
+		if (regex_match(str, pattern + 2))
+		{
+			return (1);
+		}
+		adv = 0;
+	}
+	if ((*str && *pattern == '.') || *str == *pattern)
+	{
+		return (regex_match(str + 1, pattern + adv));
+	}
+	return (0);
 }
 
 
@@ -35,6 +41,8 @@ int wildcmp(char *s1, char *s2)
 
 	a = s1;
 	b = s2;
+
+	printf("a: %s b: %s\n", a, b);
 
 	if ((*a == '\0' && *b == '\0') || *b == '*')
 		return (1);
