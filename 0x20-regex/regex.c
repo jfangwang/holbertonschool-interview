@@ -21,7 +21,7 @@ int regex_match(char *str, char *pattern)
 	if (*a == '\0' || *b == '\0')
 		return (0);
 	if (*a == *b || *b == '.')
-		return (regex_match(a + 1, b + 1));
+		return (regex_match(a + 1, b + 1) || regex_match(a, b + 1));
 	if (*b == '*')
 	{
 		if (*(b + 1) == '\0')
