@@ -4,6 +4,8 @@
 
 def isWinner(x, nums):
     """isWinner"""
+    if not nums or x < 1:
+        return None
     ben = 0
     maria = 0
     for i in range(0, x):
